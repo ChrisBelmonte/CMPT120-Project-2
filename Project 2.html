@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>My First Game</title>
+    <script>
+      var score = 0;
+      var north = true;
+      var west = true;
+      var east = true;
+      var south = true;
+      function btn_direction_click(direction) {
+        if (direction === 1) {
+          var msg = "You have walked North."
+          updateText(msg);
+          if (north === true) {
+            score = score + 5; 
+            north = false;
+          }          
+        }        
+        else 
+            if (direction === 2) {
+              var msg = "You have walked West."
+              updateText(msg);
+              if (west === true) {
+                score = score + 5; 
+                west = false;
+          }  
+        } 
+        else 
+            if (direction === 3) {
+              var msg = "You have walked East."
+              updateText(msg);
+              if (east === true) {
+                score = score + 5; 
+                east = false;
+          }  
+        } 
+        else 
+            if (direction === 4) {
+              var msg = "You have walked South."
+              updateText(msg);
+              if (south === true) {
+                score = score + 5; 
+                south = false;
+          }  
+        }
+      }
+      
+      function updateText(msg) {
+           var ta = document.getElementById("taGame");
+           ta.value = msg + "\n" + ta.value;
+      }
+      
+      function btnScore() {
+        alert("Your score is: " + score);
+      }
+    </script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>My Game</h1>
+    <textarea id="taGame" rows="8" cols="40" autocomplete="off">Welcome to my game. You are outside of a house.</textarea>
+    <br>
+    <input type = "button" 
+      value = "North" 
+      onClick = "btn_direction_click(1)">
+    <br>
+    <input type = "button" 
+      value = "West" 
+      onClick = "btn_direction_click(2)" >
+    <input type = "button" 
+      value = "East" 
+      onClick = "btn_direction_click(3)" >
+    <br>
+    <input type = "button" 
+      value = "South" 
+      onClick = "btn_direction_click(4)" >
+    <br>
+    <br>
+    <br>
+    <input type = "button" 
+      value = "Score" 
+      onClick = "btnScore()" >
+    <br>
+    <a href="mailto:Christopher.Belmonte1@marist.edu">Stuck? Mail me!</a>
+ </body>
+</html>
