@@ -11,7 +11,7 @@
       var south = true;
       function btn_direction_click(direction) {
         if (direction === 1) {
-          var msg = "You have walked North."
+          var msg = "You have walked North. There is a convenience store. Would you like to enter?";
           updateText(msg);
           if (north === true) {
             score = score + 5; 
@@ -20,7 +20,7 @@
         }        
         else 
             if (direction === 2) {
-              var msg = "You have walked West."
+              var msg = "To the west is another house. This house is opened. Would you like to go inside?";
               updateText(msg);
               if (west === true) {
                 score = score + 5; 
@@ -29,7 +29,7 @@
         } 
         else 
             if (direction === 3) {
-              var msg = "You have walked East."
+              var msg = "You have walked to the east. There is nothing over here except for the woods. You cannot enter the woods. Maybe if you had a certain item?";
               updateText(msg);
               if (east === true) {
                 score = score + 5; 
@@ -38,7 +38,7 @@
         } 
         else 
             if (direction === 4) {
-              var msg = "You have walked South."
+              var msg = "The house is locked.";
               updateText(msg);
               if (south === true) {
                 score = score + 5; 
@@ -60,8 +60,8 @@
     </style>
   </head>
   <body>
-    <h1>My Game</h1>
-    <textarea id="taGame" rows="8" cols="40" autocomplete="off">Welcome to my game. You are outside of a house.</textarea>
+    <h1>THE BEST GAME OF ALL GAMES</h1>
+    <textarea id="taGame" rows="8" cols="100" autocomplete="off">Welcome to my game. You are standing on the porch outside of a house. This house is not your house, and you are not quite sure how you got here.</textarea>
     <br>
     <input type = "button" 
       value = "North" 
