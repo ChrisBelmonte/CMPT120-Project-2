@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>My First Game</title>
+    <script>
+      var score = 0;
+      var north = true;
+      var west = true;
+      var east = true;
+      var south = true;
+      var userLocation = 0;
+      function btn_north_click() {
+          if (userLocation === 0) {
+            var msg = "You have walked North. There is a convenience store. Would you like to enter?";
+            updateDisplay(msg);
+            userLocation = 1;
+          }
+          else if (userLocation === 1) {
+            var msg = "The door is locked.";
+            updateDisplay(msg);
+            userLocation = 8;
+          }
+          else if (userLocation === 4) {
+            var msg = "You have walked back North. You are in the center again.";
+            updateDisplay(msg);
+            userLocation = 0;
+          }
+          else if (userLocation === 6) {
+            var msg = "You have walked back North.";
+            updateDisplay(msg);
+            userLocation = 4;
+          }
+          else if (userLocation === 2 || 5 || 3 || 7) {
+            var msg = "You cannot walk that way!";
+            updateDisplay(msg);
+          }  
+          if (north === true) {
+            score = score + 5; 
+            north = false;
+          }           
+      }
+        
+      function btn_west_click() {
+          if (userLocation === 0) {
+          var msg = "You have walked West.";
+          updateDisplay(msg);
+          userLocation = 2;
+          }
+          else if (userLocation === 2) {
+            var msg = "You have walked further West.";
+            updateDisplay(msg);
+            userLocation = 5;
+          }
+          else if (userLocation === 3) {
+            var msg = "You have walked back West. You are in the center again.";
+            updateDisplay(msg);
+            userLocation = 0;
+          }
+          else if (userLocation === 7) {
+            var msg = "You have walked back West.";
+            updateDisplay(msg);
+            userLocation = 3;
+          }
+          else if (userLocation === 1 || 8 || 4 || 6) {
+            var msg = "You cannot walk that way!";
+            updateDisplay(msg);
+          } 
+          if (west === true) {
+            score = score + 5; 
+            west = false;
+          } 
+      }
+      
+      function btn_east_click() {
+          if (userLocation === 0) {
+            var msg = "You have walked East.";
+            updateDisplay(msg);
+            userLocation = 3;
+          }
+          else if (userLocation === 3) {
+            var msg = "You have walked further East.";
+            updateDisplay(msg);
+            userLocation = 7;
+          }
+          else if (userLocation === 2) {
+            var msg = "You have walked back East. You are in the center again.";
+            updateDisplay(msg);
+            userLocation = 0;
+          }
+          else if (userLocation === 5) {
+            var msg = "You have walked back East.";
+            updateDisplay(msg);
+            userLocation = 2;
+          }
+          else if (userLocation === 4 || 6 || 1 || 8) {
+            var msg = "You cannot walk that way!";
+            updateDisplay(msg);
+          } 
+          if (east === true) {
+            score = score + 5;
+            east = false;
+          }
+      }
+      
+      function btn_south_click() {
+          if (userLocation === 0) {
+            var msg = "You have walked towards the back of the house.";
+            updateDisplay(msg);
+            userLocation = 4;
+          }
+          else if (userLocation === 4) {
+            var msg = "There are only woods here. Head back north.";
+            updateDisplay(msg);
+            userLocation = 6;
+          }
+          else if (userLocation === 1) {
+            var msg = "You have walked back South. You are in the center again.";
+            updateDisplay(msg);
+            userLocation = 0;
+          }
+          else if (userLocation === 8) {
+            var msg = "You have walked back South.";
+            updateDisplay(msg);
+            userLocation = 1;
+          }
+          else if (userLocation === 2 || 5 || 3 || 7) {
+            var msg = "You cannot walk that way!";
+            updateDisplay(msg);
+          } 
+          if (south === true) {
+            score = score + 5;
+            south = false;
+          }
+      }      
+     
+      function btn_go_click() {
+          var ta = document.getElementById("txtCommand");
+          if (ta.value === "n") {
+            btn_north_click();
+          }
+          else if (ta.value === "w") {
+            btn_west_click();
+          }
+          else if (ta.value === "e") {
+            btn_east_click();
+          }
+          else if (ta.value === "s") {
+            btn_south_click();
+          }
+          else if (ta.value === "N") {
+            btn_north_click();
+          }
+          else if (ta.value === "W") {
+            btn_west_click();
+          }
+          else if (ta.value === "E") {
+            btn_east_click();
+          }
+          else if (ta.value === "S") {
+            btn_south_click();
+          }
+          else if (ta.value !== "n" || "N" || "s" || "S" || "e" || "E" || "w" || "W") {
+            var msg = "You cannot go that way! Type 'N' or 'S' or 'E' or 'W'.";
+            updateDisplay(msg);
+          }
+      }
+      function updateDisplay(msg) {
+          var ta = document.getElementById("taGame");
+          ta.value = msg + "\n" + ta.value;
+      }
+      
+      function btnScore() {
+          alert("Your score is: " + score);
+      }
+    </script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <h1>THE BEST GAME OF ALL GAMES</h1>
+    <textarea id="taGame" rows="8" cols="100" autocomplete="off">Welcome to my game. You are standing on the porch outside of a house. This house is not your house, and you are not quite sure how you got here.</textarea>
+    <br>
+    <input type="text" id="txtCommand" autocomplete="off">
+    <input type = "button"
+      value = "Go"
+      onClick="btn_go_click()">
+    <br>
+    <input type = "button" 
+      value = "North" 
+      onClick = "btn_north_click()"
+      id = "btnNorth">
+    <br>
+    <input type = "button" 
+      value = "West" 
+      onClick = "btn_west_click()" 
+      id = "btnWest">
+    <input type = "button" 
+      value = "East" 
+      onClick = "btn_east_click()" 
+      id = "btnEast">
+    <br>
+    <input type = "button" 
+      value = "South" 
+      onClick = "btn_south_click()" 
+      id = "btnSouth">
+    <br>
+    <br>
+    <br>
+    <input type = "button" 
+      value = "Score" 
+      onClick = "btnScore()" >
+    <br>
+    <a href="mailto:Christopher.Belmonte1@marist.edu">Stuck? Mail me!</a>
+ </body>
+</html>
